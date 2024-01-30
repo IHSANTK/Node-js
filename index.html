@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>User List</title>
+
+    <style>
+   table{
+      border-collapse: collapse;
+
+   }
+   table th{
+    width: 100px;
+    background-color: rgb(75, 212, 167);
+   }
+   table td{
+    background-color: rgb(224, 137, 106);
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     padding-left: 10px ;
+     padding-right: 10px;
+     padding-top: 0px;
+   }
+   a{
+    text-decoration: none;
+    color: darkblue;
+   }
+   #adduser{
+      background-color: rgb(97, 187, 187);
+      border: none;
+      height: 25px;
+      color: black;
+      border-radius: 2px;
+      margin-left: 300px;
+   }
+    </style>
+
+  </head>
+  <body>
+    <div style="display: flex;justify-content: center; " >
+        <div>
+    <h1 style="margin-left: 270px;">User List</h1>
+    <table border="" >
+      <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Email</th>
+        <th>password</th>
+        <th style="width: 200px;">Action</th>
+      </tr>
+      <!-- Users will be dynamically added here using JavaScript -->
+    </table>
+    <br>
+    <button id="adduser"><a href="/form">Add User</a></button>
+    </div>
+    </div>
+  </body>
+</html>

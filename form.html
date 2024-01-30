@@ -1,0 +1,148 @@
+
+<html>
+  <head>
+    <title>User Form</title>
+    <style>
+     #div{
+      background-color: aqua;
+      padding-left: 100px;
+      width: 350px;
+      margin: auto;
+      margin-top: 100px;
+      box-shadow: 0px 0px 15px;
+      border-radius: 10px;
+     }
+     input{
+      margin-top: 20px;
+      width: 250px;
+      height: 30px;
+      border: 1px solid gray;
+      border-radius: 5px;
+     }
+     a{
+      text-decoration: none;
+      color: black;
+     }
+     button{
+      background-color: rgb(75, 196, 75); 
+      margin-bottom: 10px;
+      margin-left: 70px;
+      border: none; 
+      height: 25px;
+      border-radius: 3px;
+     }
+     button:hover{
+      background-color: rgb(0, 112, 0);
+     }
+     span{
+        font-size: 14px;
+     }
+  
+    
+    </style>
+  </head>
+  <body>
+
+    <div id ="div">
+    <h1 style="margin-left: 50px;">User Form</h1>
+    <form method="post" action="/add-user"  onsubmit="return validateForm()">
+     
+
+      <input type="text" id="name" name="name" placeholder="Enter your name" ><br>
+      <span class="Error"></span>
+
+      <input  type="number" id="number" name="number" placeholder="Enter your number" ><br> 
+      <span class="Error"></span>
+
+      <input type="email" id="email" name="email" placeholder="Enter your Email" ><br>
+      <span class="Error"></span>
+
+      <input type="password" id="password" name="password" placeholder="Enter Password" ><br>
+      <span class="Error"></span>
+
+      <input type="hidden" name="id" value="">
+
+      <a href="/index"><input type="submit" value="Save" style="background-color: rgb(102, 141, 141);"></a>
+
+    </form>
+    
+    <br>
+    <button>
+      <a href="/index">Back to User List</a>
+    </button>
+  </div>
+  
+
+
+  <script>
+    function validateForm() {
+      const nameInput = document.getElementById('name');
+      const numberInput = document.getElementById('number');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const Error = document.querySelectorAll(".Error")
+ 
+
+
+
+     
+      if (nameInput.value === '' && numberInput.value === '' && emailInput.value === '' && passwordInput.value === '') {
+        Error[0].textContent = 'Please enter a valid name (letters and spaces only).';
+        Error[0].style.color = 'red';
+        Error[1].textContent = 'Please enter a valid 10-digit number.';
+        Error[1].style.color = 'red';
+        Error[2].textContent = 'Please enter a valid email address.';
+        Error[2].style.color = 'red';
+        Error[3].textContent = 'Please enter a valid password (at least 8 characters).';
+        Error[3].style.color = 'red';
+        return false;
+      }
+  
+  
+      
+      const nameRegex = /^[a-zA-Z]+(?:\s[a-zA-Z]+)?$/;
+      if (!nameRegex.test(nameInput.value)) {
+        Error[0].textContent = 'Please enter a valid name (letters and spaces only).';
+        Error[0].style.color = 'red';
+        return false;
+      } else {
+        Error[0].style.display = 'none';
+      }
+  
+      
+      if (numberInput.value.length !== 10) {
+        Error[1].textContent = 'Please enter a valid 10-digit number.';
+        Error[1].style.color = 'red';
+        return false;
+      } else {
+        Error[1].style.display = 'none';
+      }
+  
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        Error[2].textContent = 'Please enter a valid email address.';
+        Error[2].style.color = 'red';
+        return false;
+      } else {
+        Error[2].style.display = 'none';
+      }
+  
+      
+      const passwordRegex = /^.{8,}$/;
+      if (!passwordRegex.test(passwordInput.value)) {
+        Error[3].textContent = 'Please enter a valid password (at least 8 characters).';
+        Error[3].style.color = 'red';
+        return false;
+      } else {
+        Error[3].style.display = 'none';
+      }
+      return true;
+    }
+  </script>
+  
+  </body>
+</html>
+
+
+
